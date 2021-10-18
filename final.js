@@ -82,4 +82,13 @@ selectors['modelos-pecas'] = "div.unprintable:nth-child(5)";
 var btnCopy = document.querySelector("#juscopy");
 btnCopy.addEventListener("click", function() {
     console.log('cliquei');
+    // var base = window.location.pathname.split("/")
+    // navigator.clipboard.writeText(selectors[base[1]])
+    // Swal.fire(modalAlerts.success)
+    // scroll(0, 0)
+    // try {
+    //     //fecha a modal no caso de jurisprudência
+    //     var btnFechar = document.querySelector(".CopyContentModal-closeButton");
+    //     btnFechar.click()
+    // } catch (e) {}
 })
