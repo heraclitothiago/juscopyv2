@@ -74,24 +74,21 @@ if (url().href.match(regex('modelos-pecas'))) {
 }
 
 var selectors = [];
-selectors['pecas'] = ".unprintable";
+selectors['processos'] = ".unprintable";
 selectors['jurisprudencia'] = ".modal-body > div:nth-child(2)";
-selectors['modelos-pecas'] = "div.unprintable:nth-child(5)";
+selectors['modelos-pecas'] = ".unprintable";
 
 var btnCopy = document.querySelector("#juscopy");
 btnCopy.addEventListener("click", function() {
     var base = window.location.pathname.split("/")
-    console.log(
-        selectors[base[1]]
-    );
-    // var base = window.location.pathname.split("/")
-    // navigator.clipboard.writeText(selectors[base[1]])
-    // Swal.fire(modalAlerts.success)
-    // scroll(0, 0)
-    // try {
-    //     //fecha a modal no caso de jurisprudência
-    //     var btnFechar = document.querySelector(".CopyContentModal-closeButton");
-    //     btnFechar.click()
-    // } catch (e) {}
-    // console.log('Copiado com sucesso! Faça-nos um pix e apoie o nosso projeto e-mail dradvloper@gmail.com');
+    var content = document.querySelector(selectors[base[1]])
+    navigator.clipboard.writeText(content.innerText)
+    Swal.fire(modalAlerts.success)
+    scroll(0, 0)
+    try {
+        //fecha a modal no caso de jurisprudência
+        var btnFechar = document.querySelector(".CopyContentModal-closeButton");
+        btnFechar.click()
+    } catch (e) {}
+    console.log('Copiado com sucesso! Faça-nos um pix e apoie o nosso projeto e-mail dradvloper@gmail.com');
 })
