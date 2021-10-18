@@ -35,6 +35,7 @@ function juscopyBtn(father) {
     btnJuscopy.classList.add('btn')
     btnJuscopy.classList.add('btn--orange')
     btnJuscopy.setAttribute("onclick", "disableModal()")
+    btnJuscopy.setAttribute("id", "juscopy")
     btnJuscopy.innerText = "Copiar com Juscopy"
         //adiciona o ícone ao botão
     var icon = document.createElement('span');
@@ -56,24 +57,10 @@ if (url().href.match(regex('modelos-pecas'))) {
     removeBtn(".DocumentActionsCard-copy-btn")
 
     juscopyBtn(".DocumentActionsCard-actions");
-    var disableModal = () => {
-        var juscopy = document.querySelector(".unprintable")
-        navigator.clipboard.writeText(juscopy.innerText)
-        Swal.fire(modalAlerts.success)
-        scroll(0, 0)
-    }
 
 } else if (url().href.match(regex('processos'))) {
     removeBtn("button.btn--blue:nth-child(1)")
     juscopyBtn(".ToolBarBase-leftActions");
-
-    var disableModal = () => {
-        var juscopy = document.querySelector("div.unprintable:nth-child(5)")
-        navigator.clipboard.writeText(juscopy.innerText)
-        Swal.fire(modalAlerts.success)
-        scroll(0, 0)
-    }
-    disableModal()
 
 } else if (url().href.match(regex('jurisprudencia'))) {
     try {
@@ -82,18 +69,25 @@ if (url().href.match(regex('modelos-pecas'))) {
     } catch (e) {}
     removeBtn(".CopyContentModal-copyButton")
     juscopyBtn(".modal-footer")
-    var disableModal = () => {
-        var juscopy = document.querySelector(".modal-body > div:nth-child(2)");
-        navigator.clipboard.writeText(juscopy.innerText)
-        Swal.fire(modalAlerts.success)
-        scroll(0, 0)
-        try {
-            //fecha a modal no caso de jurisprudência
-            var btnFechar = document.querySelector(".CopyContentModal-closeButton");
-            btnFechar.click()
-        } catch (e) {}
-    }
 
 } else {
     throw new console.error("Você não está no ambiente correto do jusbrasil");
 }
+
+var selectors = [];
+selectors['pecas'] = ".unprintable";
+selectors['jurisprudencia'] = ".modal-body > div:nth-child(2)";
+selectors['modelos-pecas'] = "div.unprintable:nth-child(5)";
+
+var btnCopy = document.querySelector("#juscopy");
+btnCopy.addEventListener("click", function() {
+    var base = window.location.pathname.split("/")
+    navigator.clipboard.writeText(selectors[base[1]])
+    Swal.fire(modalAlerts.success)
+    scroll(0, 0)
+    try {
+        //fecha a modal no caso de jurisprudência
+        var btnFechar = document.querySelector(".CopyContentModal-closeButton");
+        btnFechar.click()
+    } catch (e) {}
+})
