@@ -34,7 +34,7 @@ function juscopyBtn(father) {
     var btnJuscopy = document.createElement('a')
     btnJuscopy.classList.add('btn')
     btnJuscopy.classList.add('btn--orange')
-    btnJuscopy.setAttribute("onclick", "disableModal()")
+        // btnJuscopy.setAttribute("onclick", "disableModal()")
     btnJuscopy.setAttribute("id", "juscopy")
     btnJuscopy.innerText = "Copiar com Juscopy"
         //adiciona o ícone ao botão
