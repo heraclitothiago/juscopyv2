@@ -80,6 +80,7 @@ selectors['modelos-pecas'] = "div.unprintable:nth-child(5)";
 
 var btnCopy = document.querySelector("#juscopy");
 btnCopy.addEventListener("click", function() {
+    var base = window.location.pathname.split("/")
     console.log(
         selectors[base[1]]
     );
