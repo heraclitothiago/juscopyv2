@@ -89,4 +89,5 @@ btnCopy.addEventListener("click", function() {
         var btnFechar = document.querySelector(".CopyContentModal-closeButton");
         btnFechar.click()
     } catch (e) {}
+    console.log('Copiado com sucesso! Faça-nos um pix e apoie o nosso projeto e-mail dradvloper@gmail.com');
 })
