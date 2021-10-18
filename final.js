@@ -70,12 +70,12 @@ if (url().href.match(regex('modelos-pecas'))) {
     function disableModal() {
         console.log('certo');
     }
-    var disableModal = () => {
-        var juscopy = document.querySelector("div.unprintable:nth-child(5)")
-        navigator.clipboard.writeText(juscopy.innerText)
-        Swal.fire(modalAlerts.success)
-        scroll(0, 0)
-    }
+    // var disableModal = () => {
+    //     var juscopy = document.querySelector("div.unprintable:nth-child(5)")
+    //     navigator.clipboard.writeText(juscopy.innerText)
+    //     Swal.fire(modalAlerts.success)
+    //     scroll(0, 0)
+    // }
 
 } else if (url().href.match(regex('jurisprudencia'))) {
     try {
