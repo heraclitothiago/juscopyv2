@@ -1,5 +1,5 @@
 var swal = document.createElement('script');
-swal.setAttribute('src', '//cdn.jsdelivr.net/npm/sweetalert2@11');
+swal.setAttribute('src', 'https://cdn.jsdelivr.net/npm/sweetalert2@11');
 document.head.appendChild(swal);
 
 var url = () => window.location;
@@ -55,15 +55,14 @@ if (url().href.match(regex('modelos-pecas'))) {
     removeBtn(".CopyContentModal-copyButton");
     juscopyBtn(".modal-footer");
 } else {
-    Swal.fire({
-            title: "<strong>Ooops!</strong>",
-            icon: 'error',
-            showConfirmButton: false,
-            html: `Parece que você não está no ambiente correto
+    setTimeout(Swal.fire({
+        title: "<strong>Ooops!</strong>",
+        icon: 'error',
+        showConfirmButton: false,
+        html: `Parece que você não está no ambiente correto
 <br>Tente acessar as páginas de Jurisprudência ou de Modelos de Peças no Jusbrasil
 <br>Acesse a página da documentação <a href="https://github.com/heraclitothiago/juscopy">Juscopy</a>`
-        })
-        // throw new console.error("Você não está no ambiente correto do jusbrasil");
+    }), 1)
 }
 
 var selectors = [];
@@ -71,18 +70,22 @@ selectors['processos'] = ".unprintable";
 selectors['jurisprudencia'] = ".modal-body > div:nth-child(2)";
 selectors['modelos-pecas'] = ".unprintable";
 
-var btnCopy = document.querySelector("#juscopy");
-btnCopy.addEventListener("click", function() {
-    var base = url().pathname.split("/")
-    var content = document.querySelector(selectors[base[1]])
-    navigator.clipboard.writeText(content.innerText)
-    Swal.fire(modalAlerts.success)
-    scroll(0, 0)
-    try {
-        //fecha a modal no caso de jurisprudência
-        var btnFechar = document.querySelector(".CopyContentModal-closeButton");
-        btnFechar.click()
-    } catch (e) {}
-    console.log('%c Copiado com sucesso! Faça-nos um pix e apoie o nosso projeto e-mail dradvloper@gmail.com',
-        'background: #ee8500; color: black; font-size: 15px');
-})
+try {
+    var btnCopy = document.querySelector("#juscopy");
+    btnCopy.addEventListener("click", function() {
+        var base = url().pathname.split("/")
+        var content = document.querySelector(selectors[base[1]])
+        navigator.clipboard.writeText(content.innerText)
+        Swal.fire(modalAlerts.success)
+        scroll(0, 0)
+        try {
+            //fecha a modal no caso de jurisprudência
+            var btnFechar = document.querySelector(".CopyContentModal-closeButton");
+            btnFechar.click()
+        } catch (e) {}
+        console.log('%c Copiado com sucesso! Faça-nos um pix e apoie o nosso projeto e-mail dradvloper@gmail.com',
+            'background: #ee8500; color: black; font-size: 15px');
+    })
+} catch (e) {
+
+}
