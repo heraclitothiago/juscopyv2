@@ -18,14 +18,6 @@ var modalAlerts = {
         html: `Fortaleça nossa causa 💪
 <br> Doe-nos 💸 qualquer quantia ☕ e incentive o desenvolvimento de facilidades que o beneficiarão sempre 🤩
 <br><b>Pix</b> dradvloper@gmail.com`
-    },
-    fail: {
-        title: "<strong>Ooops!</strong>",
-        icon: 'error',
-        showConfirmButton: false,
-        html: `Parece que você não está no ambiente correto
-<br>Tente acessar as páginas de Jurisprudência ou de Modelos de Peças no Jusbrasil
-<br>Acesse a página da documentação <a href="https://github.com/heraclitothiago/juscopy">Juscopy</a>`
     }
 }
 
@@ -63,12 +55,15 @@ if (url().href.match(regex('modelos-pecas'))) {
     removeBtn(".CopyContentModal-copyButton");
     juscopyBtn(".modal-footer");
 } else {
-    try {
-        Swal.fire(modalAlerts.fail)
-    } catch (e) {
-        Swal.fire(modalAlerts.fail)
-    }
-    // throw new console.error("Você não está no ambiente correto do jusbrasil");
+    Swal.fire({
+            title: "<strong>Ooops!</strong>",
+            icon: 'error',
+            showConfirmButton: false,
+            html: `Parece que você não está no ambiente correto
+<br>Tente acessar as páginas de Jurisprudência ou de Modelos de Peças no Jusbrasil
+<br>Acesse a página da documentação <a href="https://github.com/heraclitothiago/juscopy">Juscopy</a>`
+        })
+        // throw new console.error("Você não está no ambiente correto do jusbrasil");
 }
 
 var selectors = [];
