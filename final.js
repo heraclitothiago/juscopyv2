@@ -63,8 +63,12 @@ if (url().href.match(regex('modelos-pecas'))) {
     removeBtn(".CopyContentModal-copyButton");
     juscopyBtn(".modal-footer");
 } else {
-    Swal.fire(modalAlerts.fail)
-        // throw new console.error("Você não está no ambiente correto do jusbrasil");
+    try {
+        Swal.fire(modalAlerts.fail)
+    } catch (e) {
+        Swal.fire(modalAlerts.fail)
+    }
+    // throw new console.error("Você não está no ambiente correto do jusbrasil");
 }
 
 var selectors = [];
