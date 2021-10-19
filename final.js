@@ -62,7 +62,7 @@ if (url().href.match(regex('modelos-pecas'))) {
         html: `Parece que você não está no ambiente correto
 <br>Tente acessar as páginas de Jurisprudência ou de Modelos de Peças no Jusbrasil
 <br>Acesse a página da documentação <a href="https://github.com/heraclitothiago/juscopy">Juscopy</a>`
-    }), 1)
+    }), 500)
 }
 
 var selectors = [];
