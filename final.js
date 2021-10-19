@@ -64,7 +64,7 @@ if (url().href.match(regex('modelos-pecas'))) {
     <br>Tente acessar as páginas de Jurisprudência ou de Modelos de Peças no Jusbrasil
     <br>Acesse a página da documentação <a href="https://github.com/heraclitothiago/juscopy">Juscopy</a>`
         })
-    }, 8000)
+    }, 1e3)
 }
 
 var selectors = [];
