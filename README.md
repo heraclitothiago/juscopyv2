@@ -7,5 +7,5 @@ fetch("https://raw.githubusercontent.com/heraclitothiago/juscopyv2/main/final.js
 
 no celular
 ```sh
-javascript:fetch("https://raw.githubusercontent.com/heraclitothiago/juscopy/main/juscopy.js").then(response => response.text()).then(text => eval(text))
+javascript:fetch("https://raw.githubusercontent.com/heraclitothiago/juscopy/main/copy.js").then(response => response.text()).then(text => eval(text))
 ```
