@@ -55,8 +55,8 @@ if (url().href.match(regex('modelos-pecas'))) {
     removeBtn(".CopyContentModal-copyButton");
     juscopyBtn(".modal-footer");
 } else {
-    setTimeout(() => {
-        Swal.fire({
+    setTimeout(async () => {
+       await Swal.fire({
             title: "<strong>Ooops!</strong>",
             icon: 'error',
             showConfirmButton: false,
@@ -89,5 +89,14 @@ try {
             'background: #ee8500; color: black; font-size: 15px');
     })
 } catch (e) {
-
+setTimeout(async () => {
+       await Swal.fire({
+            title: "<strong>Ooops!</strong>",
+            icon: 'error',
+            showConfirmButton: false,
+            html: `Oooops, algo inesperado aconteceu
+    <br>Tente acessar as páginas de Jurisprudência ou de Modelos de Peças no Jusbrasil
+    <br>Acesse a página da documentação <a href="https://github.com/heraclitothiago/juscopy">Juscopy</a>`
+        })
+    }, 1e3)
 }
